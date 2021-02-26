@@ -16,3 +16,10 @@ it('should add 1 to 4 = 5', () => {
   wrapper.vm.add('1');
   expect(wrapper.vm.runningTotal).to.equal(5)
 } )
+
+it('should subtract 4 from 7 and get 3', () => {
+  const wrapper = shallowMount(App)
+  wrapper.vm.previousTotal = 7
+  wrapper.vm.subtract('4');
+  expect(wrapper.vm.runningTotal).to.equal(3)
+})
