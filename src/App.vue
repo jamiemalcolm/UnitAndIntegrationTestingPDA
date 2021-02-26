@@ -9,9 +9,8 @@
 </template>
 
 <script>
-
-import Calculator from '@/components/Calculator.vue';
-import {eventBus} from '@/main.js';
+import Calculator from "@/components/Calculator.vue";
+import { eventBus } from "@/main.js";
 
 export default {
   name: "app",
@@ -25,13 +24,14 @@ export default {
     };
   },
   components: {
-    'calculator': Calculator
+    calculator: Calculator,
   },
-  mounted(){
-    eventBus.$on('number-clicked', number => this.numberClick(number))
-    eventBus.$on('clear-clicked', () => this.clearClick())
-    eventBus.$on('operator-clicked', operator => this.operatorClick(operator))
-
+  mounted() {
+    eventBus.$on("number-clicked", (number) => this.numberClick(number));
+    eventBus.$on("clear-clicked", () => this.clearClick());
+    eventBus.$on("operator-clicked", (operator) =>
+      this.operatorClick(operator)
+    );
   },
   methods: {
     numberClick: function (number) {
@@ -92,7 +92,9 @@ export default {
       this.runningTotal = parseFloat(this.previousTotal) * parseFloat(number);
     },
     divide(number) {
-      this.runningTotal = parseFloat(this.previousTotal) / parseFloat(number);
+      if (number == 0) this.runningTotal = "error, divide by zero";
+      else
+        this.runningTotal = parseFloat(this.previousTotal) / parseFloat(number);
     },
   },
 };
@@ -131,7 +133,7 @@ h2 {
 
 .buttons button {
   flex-grow: 1;
-  background-color:grey;
+  background-color: grey;
   font-size: 1.1em;
   color: white;
   width: 3.5em;
@@ -140,8 +142,6 @@ h2 {
   margin: 5px;
   border-radius: 10px;
 }
-
-
 
 .one {
   display: flex;
