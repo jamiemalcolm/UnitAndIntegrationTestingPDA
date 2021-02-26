@@ -37,5 +37,4 @@ it('should divide 21 by 7 and get 3', () => {
   wrapper.vm.divide('7');
   expect(wrapper.vm.runningTotal).to.equal(3)
 })
-
 })
