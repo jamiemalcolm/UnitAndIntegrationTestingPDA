@@ -16,4 +16,14 @@ describe('calculator', () => {
     cy.get('#number1').click();
     cy.get('.display').should('contain', '111')
   })
+
+  it('should update the running total with the result of an operation', () => {
+    cy.get('#number1').click();
+    cy.get('#number2').click();
+    cy.get('#operator_add').click();
+    cy.get('#number3').click();
+    cy.get('#operator_equals').click();
+    cy.get('.display').should('contain', 15)
+
+  })
 })
