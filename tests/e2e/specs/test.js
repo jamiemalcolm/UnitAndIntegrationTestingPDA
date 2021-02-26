@@ -9,4 +9,11 @@ describe('calculator', () => {
     cy.get('#number2').click();
     cy.get('.display').should('contain', '2')
   })
+
+  it('should update the running total as number buttons are pressed', () => {
+    cy.get('#number1').click();
+    cy.get('#number1').click();
+    cy.get('#number1').click();
+    cy.get('.display').should('contain', '111')
+  })
 })
