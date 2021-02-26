@@ -44,4 +44,18 @@ it('should concatenate multiple number button clicks', () => {
   wrapper.vm.numberClick('2') 
   expect(wrapper.vm.runningTotal).to.equal(22)
 })
+
+it('should chain multiple operations together', () => {
+  const wrapper = shallowMount(App)
+  wrapper.vm.numberClick('2')
+  wrapper.vm.numberClick('4')
+  wrapper.vm.operatorClick('+')
+  wrapper.vm.numberClick('12')
+  wrapper.vm.operatorClick('-')
+  wrapper.vm.numberClick('3')
+  wrapper.vm.operatorClick('=')
+  expect(wrapper.vm.runningTotal).to.equal(33)
+
+
+})
 })
